@@ -25,4 +25,12 @@ class FeedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupUI(news:News){
+        self.iconImgView.image = news.iconImage
+        self.titleLabel.text = news.title
+        self.descriptionLabel.text = news.description
+        self.accessoryLabel.text = "\(news.author) • \(news.view) views • \(news.createDate)"
+        self.titleLabel.textColor = UIColor.red
+    }
+    
 }

@@ -15,14 +15,17 @@ class News {
     var author:String
     var view:Int
     var createDate:String
+    var category:String
     
-    init(title:String, description:String, iconImage:UIImage, author:String, view:Int, createDate:String) {
+    init(title:String, description:String, iconImage:UIImage, author:String, view:Int, createDate:String, category:String = "Undefined") {
         self.title = title
         self.description = description
         self.iconImage = iconImage
         self.author = author
         self.view = view
         self.createDate = createDate
+        self.category = category
     }
+
     
 }

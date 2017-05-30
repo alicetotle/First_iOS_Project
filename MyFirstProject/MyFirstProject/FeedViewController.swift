@@ -12,19 +12,14 @@ class FeedViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var news:News = News(title: "iOS", description: "Error lets stop doing this", iconImage: #imageLiteral(resourceName: "cheese_flat"), author: "พยุต", view: 2, createDate: "29/06/60")
-    var news2:News = News(title: "Android", description: "5555+", iconImage: #imageLiteral(resourceName: "cat"), author: "แจ็ค", view: 9999, createDate: "29/06/60")
+    
     var newsArray:[News] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedTableViewCell")
-        newsArray.append(self.news)
-        newsArray.append(self.news2)
-        newsArray.append(self.news2)
-        newsArray.append(self.news2)
-        newsArray.append(self.news2)
-        newsArray.append(self.news2)
+        self.setupTableView()
+        self.setupTableViewDummyData()
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -33,7 +28,28 @@ class FeedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    /**
+     ติดตั้ง TableView
+     */
+    func setupTableView(){
+        self.tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedTableViewCell")
+    }
+    
+    /**
+     สร้างข้อมูลทดสอบใน TableView
+     */
+    func setupTableViewDummyData(){
+        let news:News = News(title: "iOS", description: "Error lets stop doing this", iconImage: #imageLiteral(resourceName: "cheese_flat"), author: "พยุต", view: 2, createDate: "29/06/60")
+        var news2:News = News(title: "Android", description: "5555555555+", iconImage: #imageLiteral(resourceName: "cat"), author: "แจ็ค", view: 999999999, createDate: "29/06/60")
+        
+        newsArray.append(news)
+        newsArray.append(news2)
+        newsArray.append(news2)
+        newsArray.append(news2)
+        newsArray.append(news2)
+        newsArray.append(news2)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -64,10 +80,7 @@ extension FeedViewController: UITableViewDataSource,UITableViewDelegate{
         let rowNo = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
         var news:News = newsArray[rowNo]
-        cell.iconImgView.image = news.iconImage
-        cell.titleLabel.text = news.title
-        cell.descriptionLabel.text = news.description
-        cell.accessoryLabel.text = "\(news.author) • \(news.view) views • \(news.createDate)"
+        cell.setupUI(news: news)
         return cell
     }
 }
