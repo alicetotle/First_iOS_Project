@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
-
+class SaveFeedViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -22,7 +22,7 @@ class FeedViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,9 +45,7 @@ class FeedViewController: UIViewController {
         newsArray.append(news)
         newsArray.append(news2)
         newsArray.append(news2)
-        newsArray.append(news2)
-        newsArray.append(news2)
-        newsArray.append(news2)
+
     }
     
     
@@ -60,18 +58,18 @@ class FeedViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
-extension FeedViewController: UITableViewDataSource,UITableViewDelegate{
+extension SaveFeedViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
