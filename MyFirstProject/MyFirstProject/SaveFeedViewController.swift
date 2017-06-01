@@ -23,9 +23,14 @@ class SaveFeedViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupTableViewDummyData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.setupTableViewDummyData()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,8 +55,8 @@ class SaveFeedViewController: UIViewController {
     }
     
     
-    func toFeedDetailViewController(news:News){
-        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FeedDetailViewController") as? FeedDetailViewController {
+    func toSaveFeedDetailViewController(news:News){
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SaveFeedDetailViewController") as? SaveFeedDetailViewController {
             viewController.news = news
             self.navigationController?.pushViewController(viewController, animated: true)
             
@@ -96,7 +101,7 @@ extension SaveFeedViewController: UITableViewDataSource,UITableViewDelegate{
         let rowNo = indexPath.row
         var news:News = newsArray[rowNo]
         print(indexPath.row)
-        self.toFeedDetailViewController(news: news)
+        self.toSaveFeedDetailViewController(news: news)
     }
 }
 
